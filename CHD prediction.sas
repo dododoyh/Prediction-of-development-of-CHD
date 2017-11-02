@@ -15,7 +15,7 @@ run;
 /*get missing data*/
 proc means data=lipid n nmiss mean min max;
 run;
-/*Examine the e�ffect of unknown values.*/
+/*Examine the effect of unknown values.*/
 data lipidem;
   set lipid;
   nobmi=(bmi=.);
