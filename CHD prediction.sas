@@ -1,6 +1,5 @@
 /*This is the SAS code for Coronary Heart Disease Prediction project */
 
-
 libname s5238 "/courses/d0f434e5ba27fe300/sta5238";
 
 /* Describe the orginal data*/
@@ -15,6 +14,7 @@ run;
 /*get missing data*/
 proc means data=lipid n nmiss mean min max;
 run;
+
 /*Examine the effect of unknown values.*/
 data lipidem;
   set lipid;
@@ -34,7 +34,6 @@ proc freq data=lipidem;
   tables (nobmi nochol nocurrsmok nodbp noeversmok nohdl noheight noldl nosbp noweight)*chd10yr/nocol nopercent exact;
 run;
 
-
 /*Remove missing data and create a complete case dataset*/
 data completelipid;
   set lipid;
@@ -49,6 +48,7 @@ run;
 proc corr data=completelipid;
 var age bmi chol dbp hdl height ldl sbp weight ;
 run;
+
 /*check Multi-colinearity*/
 ods select parameterestimates;
 proc logistic data=completelipid;
